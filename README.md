@@ -32,5 +32,8 @@ MuJoCo model of a 3RRR planar closed-chain robot. `3RRR_Planar.xml` defines the 
     └── XML model video 2026-10-21 19-01-16.mp4
 ```
 
-`STEP/` contains the CAD model; `Images&GIFs/` contains project images, GIFs, and videos.
-The STL meshes it references are in `meshes/`.
+`STEP/` contains the CAD model; 
+
+`Images&GIFs/` contains project images, GIFs, and videos.
+
+The STL meshes XML references are in `meshes/`.
