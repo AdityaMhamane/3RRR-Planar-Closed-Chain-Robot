@@ -1,4 +1,9 @@
-# 3RRR Planar Closed-Chain Robot
+<div align="center">
+  <h1>3RRR Planar Closed Chain Robot</h1>
+  <p>
+    <img src="https://komarev.com/ghpvc/?username=AdityaMhamane&repo=3RRR-Planar-Closed-Chain-Robot&color=blue" alt="Repository Views" />
+  </p>
+</div>
 
 MuJoCo model of a 3RRR planar closed-chain robot. `3RRR_Planar.xml` defines the robot and its close loop constraints. Run `python scene.py` to open the model in the MuJoCo viewer. I will add Inverse kinematics (IK) simulation for this model soon.
 
