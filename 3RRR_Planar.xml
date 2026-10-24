@@ -1,0 +1,86 @@
+<mujoco model="Assembly_RigidOrigin_OpenChain">
+  <compiler angle="radian"/>
+  <option integrator="implicitfast"/>
+
+  <asset>
+    <mesh name="base" content_type="model/stl" file="meshes/base.STL"/>
+    <mesh name="actA" content_type="model/stl" file="meshes/actA.STL"/>
+    <mesh name="unactA" content_type="model/stl" file="meshes/unactA.STL"/>
+    <mesh name="endEffA" content_type="model/stl" file="meshes/endEffA.STL"/>
+    <mesh name="actB" content_type="model/stl" file="meshes/actB.STL"/>
+    <mesh name="unactB" content_type="model/stl" file="meshes/unactB.STL"/>
+    <mesh name="actC" content_type="model/stl" file="meshes/actC.STL"/>
+    <mesh name="unactC" content_type="model/stl" file="meshes/unactC.STL"/>
+  </asset>
+
+  <worldbody>
+    <geom type="mesh" rgba="0.537255 0.537255 0.537255 1" mesh="base"/>
+    <body name="actA" pos="0.0802049 -0.138619 0.0295" quat="0.428302 0 0 0.903636">
+      <inertial pos="0 -0.049859 -0.0025" quat="0.5 0.5 -0.5 0.5" mass="0.0184051" diaginertia="3.76419e-05 3.61135e-05 1.60507e-06"/>
+      <joint name="joint_actA" axis="0 0 -1"/>
+      <geom type="mesh" rgba="0.960784 0.960784 0.964706 1" mesh="actA"/>
+      <body name="unactA" pos="0 -0.12 0.005" quat="0.883177 0 0 -0.469039">
+        <inertial pos="0 0.0607665 -0.0025" quat="0.5 0.5 -0.5 0.5" mass="0.0209955" diaginertia="1.27829e-05 1.09865e-05 1.88387e-06"/>
+        <joint name="joint_unactA" axis="0 0 -1"/>
+        <geom type="mesh" rgba="0.34902 0.584314 0.854902 1" mesh="unactA"/>
+        <body name="endEffA" pos="0 0.14 0">
+          <inertial pos="0.0103801 0.0437865 0.003" quat="0.5 0.5 -0.5 0.5" mass="0.0194925" diaginertia="3.08931e-05 1.54872e-05 1.54872e-05"/>
+          <joint name="joint_endEffA"/>
+          <geom type="mesh" rgba="0.854902 0.34902 0.34902 1" mesh="endEffA"/>
+
+          <site name="endEffA_site" pos="0.0 0.0 0.0" size="0.005" type="sphere" rgba="1 1 1 1"/> 
+
+          <site name="center_site" pos="0.0102757 0.043811 0.0" size="0.005" type="sphere" rgba="1 0 1 1"/> <!--while making urdf, the axis weren't positoin calculations from agnles which i got from cad look angle_.png-->
+          <site name="center_platform_site" pos="0.0102757 0.043811 0.0" size="0.005" type="sphere" rgba="1 0 1 1"/>
+
+          <site name="endEffC_site" pos="-0.0225271382539 0.0746134816376 0.0" size="0.005" type="sphere" rgba="1 1 1 1"/>
+
+          <site name="endEffB_site" pos="0.0533536014361 0.0568158148212 0.0" size="0.005" type="sphere" rgba="1 1 1 1"/>
+
+
+        </body>
+      </body>
+    </body>
+
+    <body name="actB" pos="0.0802049 0.138619 0.0295" quat="0.823325 0 0 0.56757">
+      <inertial pos="0 0.049859 -0.0025" quat="0.5 0.5 -0.5 0.5" mass="0.0184051" diaginertia="3.76419e-05 3.61135e-05 1.60507e-06"/>
+      <joint name="joint_actB" axis="0 0 -1"/>
+      <geom type="mesh" rgba="0.960784 0.960784 0.964706 1" mesh="actB"/>
+      <body name="unactB" pos="0 0.12 0.005" quat="0.469253 0 0 0.883064">
+        <inertial pos="0 0.0607665 -0.0025" quat="0.5 0.5 -0.5 0.5" mass="0.0209955" diaginertia="1.27829e-05 1.09865e-05 1.88387e-06"/>
+        <joint name="joint_unactB" axis="0 0 -1"/>
+        <geom type="mesh" rgba="0.34902 0.584314 0.854902 1" mesh="unactB"/>
+
+        <site name="UnActB_site2" pos="0.0 0.140 0.0" size="0.005" type="sphere" rgba="1 0 0 1"/> <!-- Site of unacB for equality constraint with endEFFA-->
+
+      </body>
+    </body>
+
+    <body name="actC" pos="-0.16015 -0.00015 0.0295" quat="0.0808974 0 0 -0.996722">
+      <inertial pos="0 0.049859 -0.0025" quat="0.5 0.5 -0.5 0.5" mass="0.0184051" diaginertia="3.76419e-05 3.61135e-05 1.60507e-06"/>
+      <joint name="joint_actC"/>
+      <geom type="mesh" rgba="0.960784 0.960784 0.964706 1" mesh="actC"/>
+      <body name="unactC" pos="0 0.12 0.005" quat="0.883177 0 0 -0.469039">
+        <inertial pos="0 -0.0607665 -0.0025" quat="0.5 0.5 -0.5 0.5" mass="0.0209955" diaginertia="1.27829e-05 1.09865e-05 1.88387e-06"/>
+        <joint name="joint_unactC" axis="0 0 -1"/>
+        <geom type="mesh" rgba="0.34902 0.584314 0.854902 1" mesh="unactC"/>
+
+        <site name="UnActC_site2" pos="0.0 -0.140 0.0" size="0.005" type="sphere" rgba="0 0 1 1"/> <!-- Site of unacC for equality constraint with endEFFA-->
+      </body>
+    </body>
+
+  </worldbody>
+
+  <!--close chain constraints-->
+  <equality>
+    <connect name="endEffBB" active="true" site1="endEffB_site" site2="UnActB_site2" solref="0.005 1" />
+    <connect name="endEffCC" active="true" site1="endEffC_site" site2="UnActC_site2" solref="0.005 1" />
+  </equality>
+
+  <actuator>
+    <position name="actA" joint="joint_actA" kp="20" kv="0.5" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+    <position name="actB" joint="joint_actB" kp="20" kv="0.5" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+    <position name="actC" joint="joint_actC" kp="20" kv="0.5" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+  </actuator>
+
+</mujoco>
